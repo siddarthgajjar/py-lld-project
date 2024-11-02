@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import say_hello, say_hello_name
+from .views import users
 
 urlpatterns = [
+    path("users/", users),
     path("admin/", admin.site.urls),
     path("", say_hello),
     path("say_hello/<name>", say_hello_name),
