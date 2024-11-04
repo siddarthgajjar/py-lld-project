@@ -17,10 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import say_hello, say_hello_name
-from .views import users
+from .views import users, update_delete_user
+from .views import UserRetrieveUpdateDestroyAPIView
+from .views import UserListCreateAPIView
+
 
 urlpatterns = [
-    path("users/", users),
+    path("users/", UserListCreateAPIView.as_view()),
+    path("users/<id>", UserRetrieveUpdateDestroyAPIView.as_view()),
     path("admin/", admin.site.urls),
     path("", say_hello),
     path("say_hello/<name>", say_hello_name),
